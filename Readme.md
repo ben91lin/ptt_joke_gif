@@ -1,3 +1,3 @@
 # Ptt Joke Gif
 
-Collected gif which post by Ptt ReiKuromiya.
+A board collected gif which post by Ptt ReiKuromiya.

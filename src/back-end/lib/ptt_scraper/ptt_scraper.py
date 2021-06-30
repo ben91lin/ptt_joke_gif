@@ -94,94 +94,26 @@ class PTT:
 
     def update(
         self,
-        target: t.Union[list, dict],
+        target: t.Union[dict, list],
         time
-        ) -> t.Union[list, dict]:
-        assert isinstance(target, dict) or isinstance(target, list)
+        ) -> t.Union[dict, list]:
         if isinstance(target, dict):
             target['update'] = time
-            return target 
-        if isinstance(target, list):
+        else:
             for t in target:
-                self.update(t)
-        
-
-    # def meta(self):
-    #     viewer = PttArticleViewer(self.headers)
-    #     urls = [data['url'] for data in self.article_list.data]
-    #     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     outputs = Data('Metas')
-
-    #     for url in urls:
-    #         outputs.data.append(
-    #             self.update(viewer.get(url).meta(), now)
-    #         )
-    #         sleep(self.sleep)
-
-    #     return outputs
+                t['update'] = time
+        return target 
 
     def article(self):
         viewer = PttArticleViewer(self.headers)
         urls = [data['url'] for data in self.article_list.data]
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        outputs = Data('Articles')
+        outputs = list()
 
         for url in urls:
-            outputs.data.append(
+            outputs.append(
                 self.update(viewer.get(url).article(), now)
             )
             sleep(self.sleep)
 
         return outputs
-
-    # def comment(self):
-    #     viewer = PttArticleViewer(self.headers)
-    #     urls = [data['url'] for data in self.article_list.data]
-    #     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     outputs = Data('Comments')
-
-    #     for url in urls:
-    #         comments = viewer.get(url).comments()
-    #         for c in comments:
-    #             c['url'] = url
-    #         outputs.data += self.update(comments, now)
-    #         sleep(self.sleep)
-
-    #     return outputs
-
-    # def href_in_article(self):
-    #     viewer = PttArticleViewer(self.headers)
-    #     urls = [data['url'] for data in self.article_list.data]
-    #     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     outputs = Data('Href in Article')
-        
-
-    #     for url in urls:
-    #         outputs.data.append(
-    #             {
-    #                 'url': url,
-    #                 'href_in_article': viewer.get(url).href_in_article(),
-    #                 'download_time': now
-    #             }
-    #         )
-    #         sleep(self.sleep)
-
-    #     return outputs
-
-    # def href_in_comment(self):
-    #     viewer = PttArticleViewer(self.headers)
-    #     urls = [data['url'] for data in self.article_list.data]
-    #     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     outputs = Data('Href in Comment')
-
-    #     for url in urls:
-    #         outputs.data.append(
-    #             {
-    #                 'url': url,
-    #                 'href_in_comment': viewer.get(url).href_in_comment(),
-    #                 'download_time': now
-    #             }
-    #         )
-    #         sleep(self.sleep)
-
-    #     return outputs

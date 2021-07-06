@@ -1,0 +1,41 @@
+<form class="flex flex-col content-center md:flex-row"
+    [formGroup]="filterForm!">
+    <div class="[ order ] flex items-center my-3">
+        <p class="mr-3">
+            Order: 
+        </p>
+        <input type="radio" id="DESC" value="DESC" class="hidden"
+            formControlName="order"
+            (change)="switchOrderRadio()">
+        <label for="DESC"
+            class="font-bold border border-solid rounded-l-lg p-2"
+            [@orderRadio]="orderRadio == 'DESC' ? 'active' : 'inactive'">
+            DESC
+        </label>
+        <input type="radio" id="ASC" value="ASC" class="hidden"
+            formControlName="order"
+            (change)="switchOrderRadio()">
+        <label for="ASC"
+            class="font-bold border border-l-0 border-solid rounded-r-lg p-2"
+            [@orderRadio]="orderRadio == 'ASC' ? 'active' : 'inactive'">
+            ASC
+        </label>
+    </div>
+    <div class="[ push ] flex items-center">
+        <label for="push" class="mr-3">Push Number: {{ this.filterForm!.value.push }}</label>
+        <input type="range" id="push" min="0" max="200"
+            class="mr-3"
+            formControlName="push" 
+            (change)="test()">
+    </div>
+    <div class="[ date ] flex items-center">
+        <div class="before">
+            <label for="before" class="mr-3">before:</label>
+            <input type="date" formControlName="before" id="before">
+        </div>
+        <div class="after">
+            <label for="after" class="mr-3">after:</label>
+            <input type="date" formControlName="after" id="after">
+        </div>
+    </div>
+</form>

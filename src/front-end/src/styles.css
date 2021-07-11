@@ -1,3 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500&family=Noto+Serif+TC:wght@300;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* testing layout Bg Color */
+.--bg-beige {
+    background-color: beige;
+}
+
+/* Layout Color */
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+label {
+    font-weight: 300;
+}

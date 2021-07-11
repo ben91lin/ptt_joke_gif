@@ -17,7 +17,7 @@ async def root():
     return { 'server status': 'running' }
 
 # order: ASC, DESC.
-@app.get('/jokes/{order}/')
+@app.get('/jokes/')
 async def get_jokes(
     *,
     order: str = 'DESC',

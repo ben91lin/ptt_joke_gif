@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+
+import { Article } from '../../../board/model/article';
+import { ArticleService } from '../../../services/article.service';
+import { FormService } from '../../../services/form.service';
 
 @Component({
   selector: 'app-form-filter',
@@ -38,35 +42,35 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class FormFilterComponent implements OnInit {
 
-  public filterForm!: FormGroup;
+  public filterForm: FormGroup;
   public orderRadio: string;
+  @Output() private onGetArticles: EventEmitter<Article[]>;
 
   constructor(
-    private fb: FormBuilder
+    private as: ArticleService,
+    private fs: FormService
   ) {
-    this.createFilterForm();
-    this.orderRadio = this.filterForm!.value.order;
+    this.onGetArticles = new EventEmitter<Article[]>();
+    this.filterForm = this.fs.createFilter();
+    this.orderRadio = this.fs.filterValue().order;
+    this.getArticles();
   }
 
   ngOnInit(): void {
   }
 
-  createFilterForm(): void {
-    this.filterForm!  = this.fb.group({
-      order: 'DESC',
-      push: [0, [Validators.required, Validators.min(0), Validators.max(200)]],
-      before: null,
-      after: null
-    });
-  }
-
   switchOrderRadio(): void {
-    this.orderRadio = this.filterForm!.value.order
+    this.orderRadio = this.fs.filterValue().order;
   }
 
-  test(): void {
-    console.log('test')
-    console.log(this.filterForm!)
+  getArticles(): void {
+    this.as.getArticles(
+      this.fs.query()
+    ).subscribe(
+      (articles: Article[]) => {
+        this.onGetArticles.emit(articles)
+        console.log('Filter Cons:', articles)
+      }
+    );
   }
-
 }

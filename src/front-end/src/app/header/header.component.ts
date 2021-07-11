@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
+import { Article } from 'src/app/board/model/article';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Output() private onSetArticles: EventEmitter<Article[]>;
+
+  constructor() {
+    this.onSetArticles = new EventEmitter<Article[]>();
+  }
 
   ngOnInit(): void {
+  }
+
+  setArticles(event: Article[]): void {
+    this.onSetArticles.emit(event)
+    console.log('HeaderCom: ', event)
   }
 
 }

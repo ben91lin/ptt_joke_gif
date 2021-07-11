@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { Article } from './model/article';
-import { ArticleService } from '../services/article.service'
+import { Article } from '../board/model/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-board',
@@ -11,27 +10,12 @@ import { ArticleService } from '../services/article.service'
 })
 export class BoardComponent implements OnInit {
 
-  public articles!: Article[]
+  @Input() public articles!: Article[];
 
   constructor(
-    private ArticleService: ArticleService
+    public as: ArticleService
   ) { }
 
   ngOnInit(): void {
-    this.ArticleService.getArticles().subscribe(
-      (articles: Article[]) => {
-        this.articles! = articles
-        console.log(this.articles!)
-      }
-    );
-    console.log(this.articles!)
-  }
-
-  getArticles(): void {
-    this.ArticleService.getArticles().subscribe(
-      (articles: Article[]) => {
-        this.articles! = articles
-      }
-    );
   }
 }

@@ -2,7 +2,6 @@ export interface Article {
     meta: Meta;
     href: Href;
     update: string;
-
 }
 
 interface Meta {

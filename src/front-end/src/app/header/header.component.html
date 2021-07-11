@@ -1,4 +1,7 @@
-<div class="flex border border-solid md:flex-col md:border-none md:my-2">
-    <app-site-title class="flex justify-center item-center w-full p-6 my-2 border-none md:border md:border-solid md:rounded-t-2xl"></app-site-title>
-    <app-navigation class="flex p-6 my-2 border-none --bg-beige md:w-full md:border-solid"></app-navigation>
+<div class="flex border border-solid lg:flex-col lg:border-none lg:my-2">
+    <app-site-title class="flex justify-center item-center w-full p-6 my-2 border-none lg:border lg:border-solid lg:rounded-t-2xl"></app-site-title>
+    <app-navigation
+        class="flex justify-center item-center p-6 my-2 border-none --bg-beige lg:w-full lg:border-solid"
+        (onSetArticles)="setArticles($event)">
+    </app-navigation>
 </div>

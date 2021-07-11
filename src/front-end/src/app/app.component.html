@@ -1,5 +1,7 @@
-<div class="mx-auto md:w-1/2">
-    <app-header></app-header>
-    <app-board></app-board>
+<div class="px-5 mx-auto 2xl:w-1/2">
+    <app-header
+        (onSetArticles)="setArticles($event)">
+    </app-header>
+    <app-board [articles]="articles"></app-board>
     <app-footer class="flex border border-solid rounded-b-2xl my-2"></app-footer>
 </div>

@@ -22,3 +22,7 @@ a,
 label {
     font-weight: 300;
 }
+
+div {
+    background-color: transparent;
+}

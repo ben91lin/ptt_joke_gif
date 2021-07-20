@@ -47,6 +47,6 @@ async def get_jokes(
                 'meta.timestamp',
                 ORDER.get(order, DESCENDING)
             )
-            .limit(10)
+            .limit(1)
             .skip(skip)
         )

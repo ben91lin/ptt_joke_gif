@@ -13,6 +13,8 @@ import { FormFilterComponent } from './header/navigation/form-filter/form-filter
 import { BoardComponent } from './board/board.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ArticleComponent } from './board/article/article.component';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,15 @@ import { FooterComponent } from './footer/footer.component';
     NavIconComponent,
     FormFilterComponent,
     BoardComponent,
-    FooterComponent
+    FooterComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    InfiniteScrollModule
   ],
   providers: [],
   bootstrap: [AppComponent]

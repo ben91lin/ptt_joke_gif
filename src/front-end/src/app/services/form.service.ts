@@ -9,10 +9,13 @@ import { Filterable } from '../header/navigation/form-filter/model/form-filter';
 export class FormService {
 
   public filterForm!: FormGroup;
+  public skip: number;
 
   constructor(
     private fb: FormBuilder,
-  ) { }
+  ) {
+    this.skip = 0;
+  }
 
   createFilter(): FormGroup {
     this.filterForm! = this.fb.group({
@@ -31,6 +34,7 @@ export class FormService {
   query(): Filterable {
     var query = this.filterForm!.value
     query = this._dateToTimestamp(query)
+    query.skip = this.skip
     return query
   }
 

@@ -44,6 +44,7 @@ export class FormFilterComponent implements OnInit {
 
   public filterForm: FormGroup;
   public orderRadio: string;
+  @Output() private onFilterChange: EventEmitter<FormService>;
   @Output() private onGetArticles: EventEmitter<Article[]>;
 
   constructor(
@@ -51,19 +52,29 @@ export class FormFilterComponent implements OnInit {
     private fs: FormService
   ) {
     this.onGetArticles = new EventEmitter<Article[]>();
+    this.onFilterChange = new EventEmitter<FormService>();
     this.filterForm = this.fs.createFilter();
     this.orderRadio = this.fs.filterValue().order;
-    this.getArticles();
+    this.onFilterChange.emit(this.fs);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    this.filterChange()
   }
 
   switchOrderRadio(): void {
     this.orderRadio = this.fs.filterValue().order;
   }
 
+  filterChange(): void {
+    this.onFilterChange.emit(this.fs);
+    this.getArticles();
+  }
+
   getArticles(): void {
+    this.fs.skip = 0;
     this.as.getArticles(
       this.fs.query()
     ).subscribe(

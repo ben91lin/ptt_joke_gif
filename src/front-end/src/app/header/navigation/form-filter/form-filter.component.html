@@ -8,7 +8,7 @@
             <input type="radio" id="DESC" value="DESC" class="hidden"
                 formControlName="order"
                 (change)="switchOrderRadio()"
-                (change)="getArticles()">
+                (change)="filterChange()">
             <label for="DESC"
                 class="font-bold border border-solid rounded-l-lg p-2"
                 [@orderRadio]="orderRadio == 'DESC' ? 'active' : 'inactive'">
@@ -17,7 +17,7 @@
             <input type="radio" id="ASC" value="ASC" class="hidden"
                 formControlName="order"
                 (change)="switchOrderRadio()"
-                (change)="getArticles()">
+                (change)="filterChange()">
             <label for="ASC"
                 class="font-bold border border-l-0 border-solid rounded-r-lg p-2"
                 [@orderRadio]="orderRadio == 'ASC' ? 'active' : 'inactive'">
@@ -29,20 +29,20 @@
         <label for="push" class="border-b border-solid pb-2 mb-2">Push Number: {{ this.filterForm!.value.push }}</label>
         <input type="range" id="push" min="0" max="99"
             formControlName="push" 
-            (change)="getArticles()">
+            (change)="filterChange()">
     </div>
     <div class="[ date ] flex">
         <div class="[ before ] flex flex-col items-left mr-6">
             <label for="before" class="border-b border-solid pb-2 mb-2">before</label>
             <input type="date" id="before"
                 formControlName="before" 
-                (change)="getArticles()">
+                (change)="filterChange()">
         </div>
         <div class="[ after ] flex flex-col items-left mr-6">
             <label for="after" class="border-b border-solid pb-2 mb-2">after</label>
             <input type="date" id="after" 
                 formControlName="after" 
-                (change)="getArticles()">
+                (change)="filterChange()">
         </div>
     </div>
 </form>

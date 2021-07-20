@@ -3,5 +3,5 @@ export interface Filterable {
     before: string,
     after: string,
     push: number,
-    skip: string
+    skip: number
 }

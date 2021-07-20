@@ -1,11 +1,10 @@
 <div *ngIf="articles" infinite-scroll (scrolled)="onScrollDown()">
-    <div >
-        <app-article
-            *ngFor="let article of articles"
-            [url]="article.meta.url"
-            [push]="article.meta.push"
-            [id]="article.meta.author.id"
-            [hrefs]="article.href.article">
-        </app-article>
-    </div>
+    <app-article
+        *ngFor="let article of articles"
+        [url]="article.meta.url"
+        [push]="article.meta.push"
+        [timestamp]="article.meta.timestamp"
+        [id]="article.meta.author.id"
+        [hrefs]="article.href.article">
+    </app-article>
 </div>

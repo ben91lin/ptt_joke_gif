@@ -1,4 +1,5 @@
 <app-nav-icon class="block lg:hidden"></app-nav-icon>
 <app-form-filter class="hidden lg:block"
-    (onGetArticles)="setArticles($event)"
+    (onFilterChange)="setFormService($event)"
+    (onGetArticles)="setArticles($event)">
     ></app-form-filter>

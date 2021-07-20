@@ -1,7 +1,11 @@
-<div class="fixed flex bg-white border border-solid lg:flex-col lg:border-none lg:py-2">
-    <app-site-title class="flex justify-center item-center w-full p-6 my-2 border-none lg:border lg:border-solid lg:rounded-t-2xl"></app-site-title>
-    <app-navigation
-        class="flex justify-center item-center p-6 my-2 border-none --bg-beige lg:w-full lg:border-solid"
+<div class="relative flex border border-solid lg:flex-col lg:border-none">
+    <app-site-title 
+        class="flex justify-center items-center bg-green-300 w-full p-4 mt-2 lg:rounded-t-2xl">
+    </app-site-title>
+    <app-navigation #appNavigation
+        class="flex justify-center items-center p-4 mb-2 z-10 --bg-beige lg:w-full lg:rounded-b-2xl"
+        [ngStyle]="setFixedStyles()"
+        (onSetFormService)="setFormService($event)"
         (onSetArticles)="setArticles($event)">
     </app-navigation>
 </div>

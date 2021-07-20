@@ -9,7 +9,7 @@ export class FooterComponent implements OnInit {
   public copyright: string
 
   constructor() {
-    this.copyright = 'Copyright by Aben 2021.'
+    this.copyright = 'Copyright © 2021 Aben. All rights reserved.'
   }
 
   ngOnInit(): void {

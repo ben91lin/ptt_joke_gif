@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Article } from '../model/article';
-
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -11,14 +9,24 @@ export class ArticleComponent implements OnInit {
 
   @Input() public url!: string;
   @Input() public push!: number;
+  @Input() public timestamp!: number;
   @Input() public id!: string;
   @Input() public hrefs!: string[];
-  @Input() public b!: Article;
-
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  isImg(href: string): boolean {
+    return ['gif', 'jpg'].includes(href.slice(-3))
+  }
+
+  isVideo(href: string): boolean {
+    return ['mp4'].includes(href.slice(-3))
+  }
+
+  toDateTime(timestamp: number): string {
+    return new Date(timestamp).toString()
+  }
 }

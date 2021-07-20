@@ -20,7 +20,7 @@ export class ArticleService {
       before: '',
       after: '',
       push: 0,
-      skip: '0'
+      skip: 0
     }
   ) :Observable<Article[]> {
     let httpParams = new HttpParams();

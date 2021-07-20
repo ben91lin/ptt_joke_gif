@@ -1,7 +1,13 @@
-<div class="px-5 mx-auto 2xl:w-1/2">
-    <app-header
-        (onSetArticles)="setArticles($event)">
-    </app-header>
-    <app-board [articles]="articles"></app-board>
-    <app-footer class="flex border border-solid rounded-b-2xl my-2"></app-footer>
+<div class="bg-indigo-700">
+    <div class="px-2 mx-auto 2xl:w-1/2 2xl:px-0">
+        <app-header
+            (onSetFormService)="setFormService($event)"
+            (onSetArticles)="setArticles($event)">
+        </app-header>
+        <app-board 
+            [fs]="fs"
+            [articles]="articles">
+        </app-board>
+        <app-footer class="flex border border-solid rounded-b-2xl my-2"></app-footer>
+    </div>
 </div>

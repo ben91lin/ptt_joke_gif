@@ -8,6 +8,11 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    minHeight: {
+      '8': '2rem',
+      '16': '4rem',
+      '32': '8rem'
+    },
     extend: {},
   },
   variants: {

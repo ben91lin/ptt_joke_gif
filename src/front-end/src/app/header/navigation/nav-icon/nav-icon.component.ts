@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nav-icon',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavIconComponent implements OnInit {
 
-  constructor() { }
+  @Output() private onIsOpen: EventEmitter<Boolean>;
+  public isOpen:boolean;
+
+  constructor() {
+    this.onIsOpen = new EventEmitter<Boolean>();
+    this.isOpen = false;
+  }
 
   ngOnInit(): void {
   }
 
+  onToggleIsOpen(): void {
+    this.isOpen = !this.isOpen
+    this.onIsOpen.emit(this.isOpen)
+  }
 }

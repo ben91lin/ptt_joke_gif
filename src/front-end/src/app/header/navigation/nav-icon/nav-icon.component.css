@@ -1,0 +1,11 @@
+.nav-icon {
+    display: block;
+    height: 100%;
+    width: 100%;
+    min-height: 1.5rem;
+    min-width: 2rem;
+    background: radial-gradient(farthest-side, #F9FAF4  100%, transparent) center right/8px 8px,
+        radial-gradient(farthest-side, #F9FAF4  100%, transparent) center center/8px 8px,
+        radial-gradient(farthest-side, #F9FAF4  100%, transparent) center left/8px 8px;
+    background-repeat: no-repeat;
+}

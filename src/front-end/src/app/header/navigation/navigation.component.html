@@ -1,5 +1,8 @@
-<app-nav-icon class="block lg:hidden"></app-nav-icon>
-<app-form-filter class="hidden lg:block"
+<app-nav-icon class="flex justify-center content-center lg:hidden"
+    (onIsOpen)="setIsOpen($event)"
+    ></app-nav-icon>
+<app-form-filter class="w-full lg:block"
+    [class] = "isOpen ? '' : 'hidden'"
     (onFilterChange)="setFormService($event)"
     (onGetArticles)="setArticles($event)">
     ></app-form-filter>

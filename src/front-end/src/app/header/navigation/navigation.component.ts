@@ -12,15 +12,21 @@ export class NavigationComponent implements OnInit {
 
   @Output() private onSetFormService: EventEmitter<FormService>;
   @Output() private onSetArticles: EventEmitter<Article[]>;
+  public isOpen: Boolean;
 
   constructor(
     public ele: ElementRef
   ) {
     this.onSetFormService = new EventEmitter<FormService>();
     this.onSetArticles = new EventEmitter<Article[]>();
+    this.isOpen = false;
   }
 
   ngOnInit(): void {
+  }
+
+  setIsOpen(event: Boolean):void {
+    this.isOpen = event;
   }
 
   setFormService(event: FormService): void {
@@ -32,5 +38,4 @@ export class NavigationComponent implements OnInit {
     this.onSetArticles.emit(event)
     console.log('NavCom: ', event)
   }
-
 }

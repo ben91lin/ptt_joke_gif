@@ -1,7 +1,7 @@
-<form class="flex flex-col content-center lg:flex-row"
+<form class="flex flex-wrap justify-around"
     [formGroup]="filterForm">
-    <div class="[ order ] flex flex-col items-left mr-6">
-        <p class="border-b border-solid pb-2 mb-2">
+    <div class="[ order ] flex flex-col items-left">
+        <p class="text-lg font-bold pb-1">
             Order
         </p>
         <div class="flex">
@@ -10,7 +10,7 @@
                 (change)="switchOrderRadio()"
                 (change)="filterChange()">
             <label for="DESC"
-                class="font-bold border border-solid rounded-l-lg p-2"
+                class="font-bold rounded-l-lg p-2"
                 [@orderRadio]="orderRadio == 'DESC' ? 'active' : 'inactive'">
                 DESC
             </label>
@@ -19,30 +19,31 @@
                 (change)="switchOrderRadio()"
                 (change)="filterChange()">
             <label for="ASC"
-                class="font-bold border border-l-0 border-solid rounded-r-lg p-2"
+                class="font-bold rounded-r-lg p-2"
                 [@orderRadio]="orderRadio == 'ASC' ? 'active' : 'inactive'">
                 ASC
             </label>
         </div>
     </div>
-    <div class="[ push ] flex flex-col items-left mr-6">
-        <label for="push" class="border-b border-solid pb-2 mb-2">Push Number: {{ this.filterForm!.value.push }}</label>
+    <div class="[ push ] flex flex-col items-left">
+        <label for="push" class="text-lg font-bold pb-1">Push: {{ this.filterForm!.value.push }}</label>
         <input type="range" id="push" min="0" max="99"
+            class="h-full"
             formControlName="push" 
             (change)="filterChange()">
     </div>
-    <div class="[ date ] flex">
-        <div class="[ before ] flex flex-col items-left mr-6">
-            <label for="before" class="border-b border-solid pb-2 mb-2">before</label>
-            <input type="date" id="before"
-                formControlName="before" 
-                (change)="filterChange()">
-        </div>
-        <div class="[ after ] flex flex-col items-left mr-6">
-            <label for="after" class="border-b border-solid pb-2 mb-2">after</label>
-            <input type="date" id="after" 
-                formControlName="after" 
-                (change)="filterChange()">
-        </div>
+    <div class="[ before ] flex flex-col items-left">
+        <label for="before" class="text-lg font-bold pb-1">before</label>
+        <input type="date" id="before"
+            class="h-full"
+            formControlName="before" 
+            (change)="filterChange()">
+    </div>
+    <div class="[ after ] flex flex-col items-left">
+        <label for="after" class="text-lg font-bold pb-1">after</label>
+        <input type="date" id="after" 
+            class="h-full"
+            formControlName="after" 
+            (change)="filterChange()">
     </div>
 </form>

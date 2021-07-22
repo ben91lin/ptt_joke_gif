@@ -17,15 +17,15 @@ import { FormService } from '../../../services/form.service';
         state(
           'active',
           style({
-            'background-color': 'rgba(248, 113, 113, 1)',
-            'color': 'rgba(255, 255, 255, 1)'
+            'background-color': '#F17A7E',
+            'color': '#F9FAF4'
           })
         ),
         state(
           'inactive',
           style({
-            'background-color': 'rgba(255, 255, 255, 1)',
-            'color': 'rgba(248, 113, 113, 1)'
+            'background-color': '#F9FAF4',
+            'color': '#F17A7E'
           })
         ),
         transition(
@@ -42,10 +42,10 @@ import { FormService } from '../../../services/form.service';
 })
 export class FormFilterComponent implements OnInit {
 
-  public filterForm: FormGroup;
-  public orderRadio: string;
   @Output() private onFilterChange: EventEmitter<FormService>;
   @Output() private onGetArticles: EventEmitter<Article[]>;
+  public filterForm: FormGroup;
+  public orderRadio: string;
 
   constructor(
     private as: ArticleService,

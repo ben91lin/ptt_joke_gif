@@ -1,9 +1,10 @@
-<div class="relative flex border border-solid lg:flex-col lg:border-none">
+<div class="relative flex flex-row lg:flex-col"
+    [ngStyle]="setFixedPaddingBottom()">
     <app-site-title 
-        class="flex justify-center items-center bg-green-300 w-full p-4 mt-2 lg:rounded-t-2xl">
+        class="flex justify-center items-center w-full p-4 lg:rounded-t-2xl">
     </app-site-title>
     <app-navigation #appNavigation
-        class="flex justify-center items-center p-4 mb-2 z-10 --bg-beige lg:w-full lg:rounded-b-2xl"
+        class="flex justify-center content-center lg:w-full p-2 lg:p-4 my-2 lg:mt-0 lg:mb-4 z-10 bg-pastel-orange rounded-2xl"
         [ngStyle]="setFixedStyles()"
         (onSetFormService)="setFormService($event)"
         (onSetArticles)="setArticles($event)">

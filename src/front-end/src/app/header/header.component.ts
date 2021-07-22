@@ -1,5 +1,4 @@
-import { Component, OnInit, Output, QueryList, ViewChildren, ElementRef, EventEmitter, HostListener, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, Output, QueryList, ViewChildren, ElementRef, EventEmitter, HostListener } from '@angular/core';
 
 import { Article } from 'src/app/board/model/article';
 import { FormService } from '../services/form.service';
@@ -14,11 +13,9 @@ export class HeaderComponent implements OnInit {
   @ViewChildren('appNavigation', {read: ElementRef}) appSiteTitle!: QueryList<ElementRef>;
   @Output() private onSetFormService: EventEmitter<FormService>;
   @Output() private onSetArticles: EventEmitter<Article[]>;
-  public isFixed!: boolean;
+  public isFixed: boolean;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document
-  ) {
+  constructor() {
     this.onSetFormService = new EventEmitter<FormService>();
     this.onSetArticles = new EventEmitter<Article[]>();
     this.isFixed = false;
@@ -38,10 +35,38 @@ export class HeaderComponent implements OnInit {
   }
 
   setFixedStyles(): Object {
-    return {
-      "position": this.isFixed ? "fixed" : "",
-      "width": this.isFixed ? "50%" : "",
-      "margin-top": this.isFixed ? "0" : ""
+    if (this.isFixed) {
+      if (window.innerWidth > 1533.8) {
+        return {
+          "position": "fixed",
+          "width": "50%",
+          "margin-top": "0"
+        }
+      } else {
+        return {
+          "position": "fixed",
+          "width": "calc(100% - 1rem)",
+          "margin-top": "0"
+        }
+      }
+    } else {
+      return {}
+    }
+  }
+
+  setFixedPaddingBottom(): Object {
+    if (this.isFixed) {
+      if (window.innerWidth > 1533.8) {
+        return {
+          "padding-bottom": "104px"
+        }
+      } else {
+        return {
+          "padding-bottom": "80px"
+        }
+      }
+    } else {
+      return {}
     }
   }
 

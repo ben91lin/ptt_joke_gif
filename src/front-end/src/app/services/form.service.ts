@@ -20,6 +20,7 @@ export class FormService {
   createFilter(): FormGroup {
     this.filterForm! = this.fb.group({
       order: 'DESC',
+      sortby: 'timestamp',
       push: [0, [Validators.required, Validators.min(0), Validators.max(99)]],
       before: '',
       after: ''
@@ -29,6 +30,10 @@ export class FormService {
 
   filterValue(): Filterable {
     return this.filterForm!.value
+  }
+
+  resetSkip(): void {
+    this.skip = 0;
   }
 
   query(): Filterable {

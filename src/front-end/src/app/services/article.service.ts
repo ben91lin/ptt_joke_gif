@@ -17,6 +17,7 @@ export class ArticleService {
   getArticles(
     formFilter: Filterable = {
       order: 'DESC',
+      sortby: 'timestamp',
       before: '',
       after: '',
       push: 0,

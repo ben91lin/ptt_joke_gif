@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter, ElementRef } from '@angular/core';
 
 import { FormService } from '../../services/form.service';
 import { Article } from 'src/app/board/model/article';
@@ -12,6 +12,7 @@ export class NavigationComponent implements OnInit {
 
   @Output() private onSetFormService: EventEmitter<FormService>;
   @Output() private onSetArticles: EventEmitter<Article[]>;
+  @Input() public isFixed!: boolean;
   public isOpen: Boolean;
 
   constructor(
@@ -27,6 +28,17 @@ export class NavigationComponent implements OnInit {
 
   setIsOpen(event: Boolean):void {
     this.isOpen = event;
+  }
+
+  setFormFilterClass(): Object {
+    if (window.innerWidth > 1533.8) {
+      return {}
+    } else {
+      return {
+        "hidden": !this.isOpen,
+        "mt-2": this.isFixed
+      }
+    }
   }
 
   setFormService(event: FormService): void {

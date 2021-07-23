@@ -1,8 +1,8 @@
 <app-nav-icon class="flex justify-center content-center lg:hidden"
     (onIsOpen)="setIsOpen($event)"
     ></app-nav-icon>
-<app-form-filter class="w-full lg:block"
-    [class] = "isOpen ? '' : 'hidden'"
+<app-form-filter class="absolute lg:relative block top-full lg:top-auto right-0 lg:right-auto w-full bg-pastel-orange z-1"
+    [ngClass]="setFormFilterClass()"
     (onFilterChange)="setFormService($event)"
     (onGetArticles)="setArticles($event)">
     ></app-form-filter>

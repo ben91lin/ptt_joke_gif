@@ -5,6 +5,7 @@
     </app-site-title>
     <app-navigation #appNavigation
         class="flex justify-center content-center lg:w-full p-2 lg:p-4 my-2 lg:mt-0 lg:mb-4 z-10 bg-pastel-orange rounded-2xl"
+        [isFixed]="isFixed"
         [ngStyle]="setFixedStyles()"
         (onSetFormService)="setFormService($event)"
         (onSetArticles)="setArticles($event)">

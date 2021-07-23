@@ -8,7 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavIconComponent implements OnInit {
 
   @Output() private onIsOpen: EventEmitter<Boolean>;
-  public isOpen:boolean;
+  public isOpen: boolean;
 
   constructor() {
     this.onIsOpen = new EventEmitter<Boolean>();

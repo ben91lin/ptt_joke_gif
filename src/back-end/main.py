@@ -13,7 +13,7 @@ ORDER = {
 }
 SORTBY = {
     'timestamp' : 'meta.timestamp',
-    'push': 'push'
+    'push': 'meta.push'
 }
 
 @app.get('/')
@@ -25,7 +25,7 @@ async def root():
 async def get_jokes(
     *,
     order: str = 'DESC',
-    sortBy: str = 'timestamp',
+    sortby: str = 'timestamp',
     before: t.Optional[int] = Query(
         None,
         description = 'Find article before specific date.',
@@ -49,7 +49,7 @@ async def get_jokes(
                 {'_id': 0}
             )
             .sort(
-                SORTBY.get(sortBy, 'meta.timestamp'),
+                SORTBY.get(sortby, 'meta.timestamp'),
                 ORDER.get(order, DESCENDING)
             )
             .limit(1)

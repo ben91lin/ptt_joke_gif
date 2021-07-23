@@ -12,7 +12,7 @@ import { FormService } from '../../../services/form.service';
   styleUrls: ['./form-filter.component.css'],
   animations: [
     trigger(
-      'orderRadio',
+      'radio',
       [
         state(
           'active',
@@ -46,6 +46,7 @@ export class FormFilterComponent implements OnInit {
   @Output() private onGetArticles: EventEmitter<Article[]>;
   public filterForm: FormGroup;
   public orderRadio: string;
+  public sortbyRadio: string;
 
   constructor(
     private as: ArticleService,
@@ -55,6 +56,7 @@ export class FormFilterComponent implements OnInit {
     this.onFilterChange = new EventEmitter<FormService>();
     this.filterForm = this.fs.createFilter();
     this.orderRadio = this.fs.filterValue().order;
+    this.sortbyRadio = this.fs.filterValue().sortby;
     this.onFilterChange.emit(this.fs);
   }
 
@@ -68,13 +70,17 @@ export class FormFilterComponent implements OnInit {
     this.orderRadio = this.fs.filterValue().order;
   }
 
-  filterChange(): void {
-    this.onFilterChange.emit(this.fs);
-    this.getArticles();
+  switchSortbyRadio(): void {
+    this.sortbyRadio = this.fs.filterValue().sortby;
   }
 
-  getArticles(): void {
-    this.fs.skip = 0;
+  filterChange(): void {
+    this.onFilterChange.emit(this.fs);
+    this._getArticles();
+  }
+
+  _getArticles(): void {
+    this.fs.resetSkip();
     this.as.getArticles(
       this.fs.query()
     ).subscribe(

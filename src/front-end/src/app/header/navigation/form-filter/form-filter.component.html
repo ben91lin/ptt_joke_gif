@@ -1,6 +1,6 @@
-<form class="flex flex-wrap justify-around"
+<form class="flex flex-col lg:flex-row justify-around p-5 lg:p-0"
     [formGroup]="filterForm">
-    <div class="[ order ] flex flex-col items-left">
+    <div class="[ order ] flex flex-col items-left pb-3 lg:pb-0">
         <p class="text-lg font-bold pb-1">
             Order
         </p>
@@ -11,7 +11,7 @@
                 (change)="filterChange()">
             <label for="DESC"
                 class="font-bold rounded-l-lg p-2"
-                [@orderRadio]="orderRadio == 'DESC' ? 'active' : 'inactive'">
+                [@radio]="orderRadio == 'DESC' ? 'active' : 'inactive'">
                 DESC
             </label>
             <input type="radio" id="ASC" value="ASC" class="hidden"
@@ -20,28 +20,53 @@
                 (change)="filterChange()">
             <label for="ASC"
                 class="font-bold rounded-r-lg p-2"
-                [@orderRadio]="orderRadio == 'ASC' ? 'active' : 'inactive'">
+                [@radio]="orderRadio == 'ASC' ? 'active' : 'inactive'">
                 ASC
             </label>
         </div>
     </div>
-    <div class="[ push ] flex flex-col items-left">
+    <div class="[ sortby ] flex flex-col items-left pb-3 lg:pb-0">
+        <p class="text-lg font-bold pb-1">
+            Sort By
+        </p>
+        <div class="flex">
+            <input type="radio" id="timestamp" value="timestamp" class="hidden"
+                formControlName="sortby"
+                (change)="switchSortbyRadio()"
+                (change)="filterChange()">
+            <label for="timestamp"
+                class="font-bold rounded-l-lg p-2"
+                [@radio]="sortbyRadio == 'timestamp' ? 'active' : 'inactive'">
+                TIME
+            </label>
+            <input type="radio" id="push" value="push" class="hidden"
+                formControlName="sortby"
+                (change)="switchSortbyRadio()"
+                (change)="filterChange()">
+            <label for="push"
+                class="font-bold rounded-r-lg p-2"
+                [@radio]="sortbyRadio == 'push' ? 'active' : 'inactive'">
+                PUSH
+            </label>
+        </div>
+    </div>
+    <div class="[ push ] flex flex-col items-left pb-3 lg:pb-0">
         <label for="push" class="text-lg font-bold pb-1">Push: {{ this.filterForm!.value.push }}</label>
         <input type="range" id="push" min="0" max="99"
             class="h-full"
             formControlName="push" 
             (change)="filterChange()">
     </div>
-    <div class="[ before ] flex flex-col items-left">
+    <div class="[ before ] flex flex-col items-left pb-3 lg:pb-0">
         <label for="before" class="text-lg font-bold pb-1">before</label>
-        <input type="date" id="before"
+        <input lang="en" type="date" id="before"
             class="h-full"
             formControlName="before" 
             (change)="filterChange()">
     </div>
-    <div class="[ after ] flex flex-col items-left">
+    <div class="[ after ] flex flex-col items-left pb-3 lg:pb-0">
         <label for="after" class="text-lg font-bold pb-1">after</label>
-        <input type="date" id="after" 
+        <input lang="en" type="date" id="after" 
             class="h-full"
             formControlName="after" 
             (change)="filterChange()">

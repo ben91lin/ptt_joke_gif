@@ -33,10 +33,6 @@ export class BoardComponent implements OnInit {
     ).subscribe(
       (articles: Article[]) => {
         this.articles = this.articles.concat(articles)
-
-        if (this.articles.length > 3) {
-          this.articles.shift()
-        }
       }
     );
   }

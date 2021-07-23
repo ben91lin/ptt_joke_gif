@@ -1,39 +1,37 @@
-<div class="text-xl bg-secondary mb-4 overflow-hidden border border-solid rounded-2xl">
-    <div class="[ meta ] text-primary grid grid-cols-6 grid-rows-4 gap-2 pb-3 mb-3">
-        <div>連結: </div>
-        <div class="col-span-5">
-            <a href="{{url}}"
+<div class="text-xl bg-secondary py-5 mb-4 overflow-hidden rounded-2xl">
+    <div class="[ meta ] text-primary grid grid-cols-12 grid-rows-4 gap-1 px-6 lg:mb-3">
+        <div class="col-span-2 lg:col-span-1">連結: </div>
+        <div class="col-span-10 lg:col-span-11">
+            <a class="break-words"
+                href="{{url}}"
                 target="_blank"
                 rel="noreferrer noopener">{{url}}</a>
         </div>
-        <div>作者: </div>
-        <div class="col-span-5">
+        <div class="col-span-2 lg:col-span-1">作者: </div>
+        <div class="col-span-10 lg:col-span-11">
             <p>{{id}}</p>
         </div>
-        <div>發文時間: </div>
-        <div class="col-span-5">
+        <div class="col-span-2 lg:col-span-1">時間: </div>
+        <div class="col-span-10 lg:col-span-11">
             <p>{{toDateTime(timestamp)}}</p>
         </div>
-        <div>推文數: </div>
-        <div class="col-span-5">
+        <div class="col-span-2 lg:col-span-1">推文: </div>
+        <div class="col-span-10 lg:col-span-11">
             <p>{{push}}</p>
         </div>
     </div>
     <div class="flex flex-col justify-center items-center">
         <div *ngFor="let href of hrefs"
-            class="flex flex-col justify-center items-center w-full md:w-3/4 lg:w-1/2 2xl:w-3/4 bg-white w-100 my-2">
-            <div class="[ image-link ] w-full h-8">
-                <button>imgur</button>
-            </div>
-            <div class="[ image-div ] flex justify-center items-center bg-primary w-full min-h-32 flex-grow">
+            class="flex flex-col justify-center items-center w-11/12 md:w-3/4 lg:w-1/2 2xl:w-3/4 bg-white w-100 m-2">
+            <div class="[ image-div ] flex justify-center items-center bg-primary w-full min-h-32 flex-grow ">
                 <img
                     *ngIf="isImg(href)"
-                    class="max-w-full max-h-full mx-auto" 
+                    class="max-w-full max-h-full mx-auto p-2" 
                     [src]="href" alt="">
                 <video
                     *ngIf="isVideo(href)"
                     type="video/mp4"
-                    class="max-w-full max-h-full mx-auto" 
+                    class="max-w-full max-h-full mx-auto p-2" 
                     [src]="href" alt=""
                     controls>
                 </video>

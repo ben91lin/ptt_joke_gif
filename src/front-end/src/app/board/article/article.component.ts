@@ -27,6 +27,6 @@ export class ArticleComponent implements OnInit {
   }
 
   toDateTime(timestamp: number): string {
-    return new Date(timestamp).toString()
+    return new Date(timestamp * 1000).toString()
   }
 }
